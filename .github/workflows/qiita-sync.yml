@@ -1,0 +1,14 @@
+name: Zenn→Qiita
+on: [push, workflow_dispatch]
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - uses: C-Naoki/zenn-qiita-sync@v1.1.2
+        with:
+          qiita-token: ${{ secrets.QIITA_TOKEN }}
+          root: articles
+          convert-commit-message: false
