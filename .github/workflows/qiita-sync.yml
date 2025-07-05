@@ -1,15 +1,18 @@
-on:
-  workflow_dispatch:   # ← 手動実行のみに変更
 name: Zenn→Qiita
-on: [push, workflow_dispatch]
 
+on:
+  push:
+    branches: [main]      # main に push したら実行
+  workflow_dispatch:      # 手動トリガ
 
 jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with: {fetch-depth: 0}
+        with:
+          fetch-depth: 0
+
       - uses: C-Naoki/zenn-qiita-sync@v1
         with:
           qiita-token: ${{ secrets.QIITA_TOKEN }}
