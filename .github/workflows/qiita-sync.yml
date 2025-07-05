@@ -1,5 +1,8 @@
+on:
+  workflow_dispatch:   # ← 手動実行のみに変更
 name: Zenn→Qiita
 on: [push, workflow_dispatch]
+
 
 jobs:
   publish:
